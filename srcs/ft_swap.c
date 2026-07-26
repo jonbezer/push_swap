@@ -6,7 +6,7 @@
 /*   By: jonbezer <jonbezer@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/07/26 15:06:58 by jonbezer          #+#    #+#             */
-/*   Updated: 2026/07/26 15:34:01 by jonbezer         ###   ########.fr       */
+/*   Updated: 2026/07/26 16:30:33 by jonbezer         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,7 @@
 
 static void	ft_swap(t_node **stack)
 {
-	t_node	*first;
-	t_node	*second;
+	t_node	*temp;
 
 	if (!stack || !*stack || !(*stack)->next)
 		return ;
