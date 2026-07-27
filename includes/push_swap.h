@@ -6,7 +6,7 @@
 /*   By: jonbezer <jonbezer@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/07/23 17:36:29 by jonbezer          #+#    #+#             */
-/*   Updated: 2026/07/26 13:34:43 by jonbezer         ###   ########.fr       */
+/*   Updated: 2026/07/27 17:02:26 by jonbezer         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,6 +39,15 @@ void	ft_clear_stack(t_node **stack);
 
 /* Parser (srcs/ft_parser.c) */
 int	ft_parse_args(int args, char **argv, t_node **stack_a);
+
+/* Operations PUSH / SWAP / ROTATE */
+/* Operations SWAP */
+void		ft_swap_sa(t_node **stack_a);
+void		ft_swap_sb(t_node **stack_b);
+void		ft_swap_ss(t_node **stack_a, t_node **stack_b);
+/* Operations PUSH */
+void	ft_push_pa(t_node **stack_a, t_node **stack_b);
+void	ft_push_pb(t_node **stack_a, t_node **stack_b);
 
 /* Functions LIBFT (srcs/ft_split.c) */
 char	**ft_split(char const *s, char c);

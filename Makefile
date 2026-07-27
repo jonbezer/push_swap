@@ -6,7 +6,7 @@
 #    By: jonbezer <jonbezer@student.42sp.org.br>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2026/07/26 13:41:22 by jonbezer          #+#    #+#              #
-#    Updated: 2026/07/26 14:13:48 by jonbezer         ###   ########.fr        #
+#    Updated: 2026/07/26 16:32:32 by jonbezer         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -16,22 +16,23 @@ CC = cc
 
 CFLAGS = -Wall -Wextra -Werror -I includes -I libft
 
-SRCS = srcs/main.c srcs/ft_parser.c srcs/ft_validations.c srcs/ft_stack_utils.c
+SRCS = srcs/main.c srcs/ft_parser.c srcs/ft_validations.c srcs/ft_stack_utils.c\
+	   srcs/ft_swap.c
 
 LIBFT = libft/libft.a
 
 OBJS = $(SRCS:.c=.o)
+
+all: $(NAME)
+
+$(NAME): $(OBJS) $(LIBFT)
+	$(CC) $(CFLAGS) $(OBJS) $(LIBFT) -o $(NAME)
 
 $(LIBFT):
 	make -C libft
 
 %.o: %.c
 	$(CC) $(CFLAGS) -c $< -o $@
-
-all: $(NAME)
-
-$(NAME): $(OBJS) $(LIBFT)
-	$(CC) $(CFLAGS) $(OBJS) $(LIBFT) -o $(NAME)
 
 clean:
 	rm -f $(OBJS)
