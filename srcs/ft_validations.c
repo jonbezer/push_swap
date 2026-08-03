@@ -6,7 +6,7 @@
 /*   By: jonbezer <jonbezer@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/07/24 19:56:40 by jonbezer          #+#    #+#             */
-/*   Updated: 2026/07/26 13:35:51 by jonbezer         ###   ########.fr       */
+/*   Updated: 2026/08/03 11:47:35 by jonbezer         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,9 +15,9 @@
 int	ft_is_number(char *str)
 {
 	while (*str == ' ' || (*str >= '\t' && *str <= '\r'))
-			str++;
+		str++;
 	if (*str == '-' || *str == '+')
-			str++;
+		str++;
 	if (!*str)
 		return (0);
 	while (*str)

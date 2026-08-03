@@ -6,7 +6,7 @@
 /*   By: jonbezer <jonbezer@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/07/24 20:13:26 by jonbezer          #+#    #+#             */
-/*   Updated: 2026/07/26 13:39:41 by jonbezer         ###   ########.fr       */
+/*   Updated: 2026/07/29 10:14:12 by jonbezer         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ static void	ft_free_split(char **split)
 	free(split);
 }
 
-static int	ft_add_num_node(t_node **stack_a, char *str)
+static int	ft_add_num_node(t_stack *stack_a, char *str)
 {
 	long	num;
 	t_node	*new_node;
@@ -34,16 +34,16 @@ static int	ft_add_num_node(t_node **stack_a, char *str)
 	num = ft_atol(str);
 	if (!ft_is_in_range(num))
 		return (0);
-	if (ft_has_duplicate(*stack_a, (int)num))
+	if (ft_has_duplicate(stack_a->head, (int)num))
 		return (0);
 	new_node = ft_create_node((int)num);
 	if (!new_node)
-		return(0);
+		return (0);
 	ft_add_back(stack_a, new_node);
 	return (1);
 }
 
-static int	ft_parse_string(char *arg, t_node **stack_a)
+static int	ft_parse_string(char *arg, t_stack *stack_a)
 {
 	int		i;
 	char	**split;
@@ -68,7 +68,7 @@ static int	ft_parse_string(char *arg, t_node **stack_a)
 	return (1);
 }
 
-int	ft_parse_args(int argc, char **argv, t_node **stack_a)
+int	ft_parse_args(int argc, char **argv, t_stack *stack_a)
 {
 	int	i;
 
