@@ -6,7 +6,7 @@
 /*   By: jonbezer <jonbezer@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/07/26 15:06:58 by jonbezer          #+#    #+#             */
-/*   Updated: 2026/07/29 10:12:28 by jonbezer         ###   ########.fr       */
+/*   Updated: 2026/08/03 14:38:17 by jonbezer         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ static void	ft_swap(t_stack *stack)
 		return ;
 	temp_value = stack->head->value;
 	stack->head->value = stack->head->next->value;
-	stack->head->next->value = temp_valuew;
+	stack->head->next->value = temp_value;
 }
 
 void	ft_swap_sa(t_stack *stack_a)

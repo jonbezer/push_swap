@@ -6,7 +6,7 @@
 /*   By: jonbezer <jonbezer@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/07/24 20:13:26 by jonbezer          #+#    #+#             */
-/*   Updated: 2026/07/29 10:14:12 by jonbezer         ###   ########.fr       */
+/*   Updated: 2026/08/03 14:37:41 by jonbezer         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,23 @@ static void	ft_free_split(char **split)
 	while (split[i])
 		free(split[i++]);
 	free(split);
+}
+
+static int	ft_parse_flag(char *arg, t_config *config)
+{
+	if (ft_strncmp(arg, "--simple", 9) == 0)
+		config->strategy = STRAT_SIMPLE;
+	else if (ft_strncmp(arg, "--medium", 9) == 0)
+		config->strategy = STRAT_MEDIUM;
+	else if (ft_strncmp(arg, "--complex", 10) == 0)
+		config->strategy = STRAT_COMPLEX;
+	else if (ft_strncmp(arg, "--adaptive", 11) == 0)
+		config->strategy = STRAT_ADAPTIVE;
+	else if (ft_strncmp(arg, "--bench", 8) == 0)
+		config->bench = 1;
+	else
+		return (0);
+	return (1);
 }
 
 static int	ft_add_num_node(t_stack *stack_a, char *str)
@@ -68,17 +85,25 @@ static int	ft_parse_string(char *arg, t_stack *stack_a)
 	return (1);
 }
 
-int	ft_parse_args(int argc, char **argv, t_stack *stack_a)
+int	ft_parse_args(int argc, char **argv, t_stack *stack_a, t_config *config)
 {
 	int	i;
 
 	i = 1;
 	while (i < argc)
 	{
-		if (!ft_parse_string(argv[i], stack_a))
+		if (argv[i][0] == '-' && argv[i][1] == '-')
 		{
-			ft_clear_stack(stack_a);
-			return (0);
+			if (!ft_parse_flag(argv[i], config))
+				return (0);
+		}
+		else
+		{
+			if (!ft_parse_string(argv[i], stack_a))
+			{
+				ft_clear_stack(stack_a);
+				return (0);
+			}
 		}
 		i++;
 	}
