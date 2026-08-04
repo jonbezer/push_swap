@@ -47,6 +47,7 @@ int	main(int argc, char **argv)
 	if (!ft_parse_args(argc, argv, &stack_a, &config))
 	{
 		write(2, "Error\n", 6);
+		ft_clear_stack(&stack_a);
 		return (1);
 	}
 	if (stack_a.size == 0)

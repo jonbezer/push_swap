@@ -6,7 +6,7 @@
 /*   By: jonbezer <jonbezer@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/08/03 10:14:38 by jonbezer          #+#    #+#             */
-/*   Updated: 2026/08/03 11:24:13 by jonbezer         ###   ########.fr       */
+/*   Updated: 2026/08/03 21:45:39 by jonbezer         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,7 @@ static void	ft_rotate(t_stack *stack)
 	first = stack->head;
 	stack->head = first->next;
 	stack->head->prev = NULL;
+	first->next = NULL;
 	first->prev = stack->tail;
 	stack->tail->next = first;
 	stack->tail = first;
