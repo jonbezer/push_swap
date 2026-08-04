@@ -6,7 +6,7 @@
 /*   By: jonbezer <jonbezer@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/07/24 20:13:26 by jonbezer          #+#    #+#             */
-/*   Updated: 2026/08/03 21:47:53 by jonbezer         ###   ########.fr       */
+/*   Updated: 2026/08/03 21:52:54 by jonbezer         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -98,6 +98,7 @@ int	ft_parse_args(int argc, char **argv, t_stack *stack_a, t_config *config)
 			{
 				ft_clear_stack(stack_a);
 				return (0);
+			}
 		}
 		else
 		{
