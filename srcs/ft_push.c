@@ -6,7 +6,7 @@
 /*   By: jonbezer <jonbezer@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/07/27 15:10:02 by jonbezer          #+#    #+#             */
-/*   Updated: 2026/07/29 10:09:17 by jonbezer         ###   ########.fr       */
+/*   Updated: 2026/08/06 11:10:23 by jonbezer         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,12 +37,16 @@ static void	ft_push(t_stack *src, t_stack *dest)
 
 void	ft_push_pa(t_stack *stack_a, t_stack *stack_b)
 {
+	if (!stack_b || !stack_b->head)
+		return ;
 	ft_push(stack_b, stack_a);
 	write(1, "pa\n", 3);
 }
 
 void	ft_push_pb(t_stack *stack_a, t_stack *stack_b)
 {
+	if (!stack_a || !stack_a->head)
+		return ;
 	ft_push(stack_a, stack_b);
 	write(1, "pb\n", 3);
 }

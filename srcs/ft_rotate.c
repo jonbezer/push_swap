@@ -6,7 +6,7 @@
 /*   By: jonbezer <jonbezer@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/08/03 10:14:38 by jonbezer          #+#    #+#             */
-/*   Updated: 2026/08/03 21:45:39 by jonbezer         ###   ########.fr       */
+/*   Updated: 2026/08/06 11:03:58 by jonbezer         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,19 +29,32 @@ static void	ft_rotate(t_stack *stack)
 
 void	ft_rotate_ra(t_stack *stack_a)
 {
+	if (!stack_a || !stack_a->head || !stack_a->head->next)
+		return ;
 	ft_rotate(stack_a);
 	write(1, "ra\n", 3);
 }
 
 void	ft_rotate_rb(t_stack *stack_b)
 {
+	if (!stack_b || !stack_b->head || !stack_b->head->next)
+		return ;
 	ft_rotate(stack_b);
 	write(1, "rb\n", 3);
 }
 
 void	ft_rotate_rr(t_stack *stack_a, t_stack *stack_b)
 {
-	ft_rotate(stack_a);
-	ft_rotate(stack_b);
+	int	verify_a;
+	int	verify_b;
+
+	verify_a = (stack_a && stack_a->head && stack_a->head->next);
+	verify_b = (stack_b && stack_b->head && stack_b->head->next);
+	if (!verify_a && !verify_b)
+		return ;
+	if (verify_a)
+		ft_rotate(stack_a);
+	if (verify_b)
+		ft_rotate(stack_b);
 	write(1, "rr\n", 3);
 }

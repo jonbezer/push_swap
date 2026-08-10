@@ -6,7 +6,7 @@
 /*   By: jonbezer <jonbezer@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/07/23 17:36:29 by jonbezer          #+#    #+#             */
-/*   Updated: 2026/08/03 14:33:10 by jonbezer         ###   ########.fr       */
+/*   Updated: 2026/08/10 19:12:51 by jonbezer         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,7 @@
 
 typedef struct s_node
 {
+	int				index;
 	int				value;
 	struct s_node	*prev;
 	struct s_node	*next;
@@ -29,7 +30,7 @@ typedef struct s_stack
 {
 	t_node	*head;
 	t_node	*tail;
-	size_t	size;
+	int		size;
 }	t_stack;
 
 typedef enum	e_strategy
@@ -46,7 +47,6 @@ typedef struct	s_config
 	t_strategy	strategy;
 }	t_config;
 
-
 /* Validation Utils (srcs/ft_validations.c) */
 int		ft_is_number(char *str);
 long	ft_atol(char *str);
@@ -59,7 +59,8 @@ void	ft_add_back(t_stack *stack, t_node *new_node);
 void	ft_clear_stack(t_stack *stack);
 
 /* Parser (srcs/ft_parser.c) */
-int		ft_parse_args(int argc, char **argv, t_stack *stack_a, t_config *config);
+int		ft_parse_args(int argc, char **argv, 
+		t_stack *stack_a, t_config *config);
 
 /* Operations SWAP (srcs/ft_swap.c) */
 void	ft_swap_sa(t_stack *stack_a);
@@ -81,9 +82,16 @@ void	ft_rev_rotate_rrb(t_stack *stack_b);
 void	ft_rev_rotate_rrr(t_stack *stack_a, t_stack *stack_b);
 
 /* Compute Disorder */
-int	ft_compute_disorder(t_stack *stack_a);
+int		ft_compute_disorder(t_stack *stack_a);
 void	ft_print_disorder(int dis, int fd);
 
+/* Index Assignment (srcs/ft_assign_index.c) */
+void	ft_assign_index(t_stack *stack_a);
+
+/* Sorting Strategies */
+void	ft_simple_sort(t_stack *stack_a, t_stack *stack_b);
+void	ft_medium_sort(t_stack *stack_a, t_stack *stack_b);
+void	ft_complex_sort(t_stack *stack_a, t_stack *stack_b);
 
 /* Main (srcs/main.c) */
 int		main(int argc, char **argv);
