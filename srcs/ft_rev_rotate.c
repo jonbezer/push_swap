@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_rev_rotate.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jonbezer <jonbezer@student.42sp.org.br>    +#+  +:+       +#+        */
+/*   By: jonbezer <jonbezer@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/08/03 11:24:28 by jonbezer          #+#    #+#             */
-/*   Updated: 2026/08/06 12:11:15 by jonbezer         ###   ########.fr       */
+/*   Updated: 2026/08/12 16:23:30 by jonbezer         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,6 +33,11 @@ void	ft_rev_rotate_rra(t_stack *stack_a)
 		return ;
 	ft_rev_rotate(stack_a);
 	write(1, "rra\n", 4);
+	if (stack_a->stats)
+	{
+		stack_a->stats->rra++;
+		stack_a->stats->total++;
+	}
 }
 
 void	ft_rev_rotate_rrb(t_stack *stack_b)
@@ -41,6 +46,11 @@ void	ft_rev_rotate_rrb(t_stack *stack_b)
 		return ;
 	ft_rev_rotate(stack_b);
 	write(1, "rrb\n", 4);
+	if (stack_b->stats)
+	{
+		stack_b->stats->rrb++;
+		stack_b->stats->total++;
+	}
 }
 
 void	ft_rev_rotate_rrr(t_stack *stack_a, t_stack *stack_b)
@@ -57,4 +67,9 @@ void	ft_rev_rotate_rrr(t_stack *stack_a, t_stack *stack_b)
 	if (verify_b)
 		ft_rev_rotate(stack_b);
 	write(1, "rrr\n", 4);
+	if (stack_a && stack_a->stats)
+	{
+		stack_a->stats->rrr++;
+		stack_a->stats->total++;
+	}
 }

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   push_swap.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jonbezer <jonbezer@student.42sp.org.br>    +#+  +:+       +#+        */
+/*   By: jonbezer <jonbezer@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/07/23 17:36:29 by jonbezer          #+#    #+#             */
-/*   Updated: 2026/08/10 19:12:51 by jonbezer         ###   ########.fr       */
+/*   Updated: 2026/08/12 16:17:23 by jonbezer         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,21 +17,6 @@
 # include <stdlib.h>
 # include <limits.h>
 # include "libft.h"
-
-typedef struct s_node
-{
-	int				index;
-	int				value;
-	struct s_node	*prev;
-	struct s_node	*next;
-}	t_node;
-
-typedef struct s_stack
-{
-	t_node	*head;
-	t_node	*tail;
-	int		size;
-}	t_stack;
 
 typedef enum	e_strategy
 {
@@ -46,6 +31,38 @@ typedef struct	s_config
 	int			bench;
 	t_strategy	strategy;
 }	t_config;
+
+typedef struct s_stats
+{
+	int	sa;
+	int	sb;
+	int	ss;
+	int	pa;
+	int	pb;
+	int	ra;
+	int	rb;
+	int	rr;
+	int	rra;
+	int	rrb;
+	int	rrr;
+	int total;
+}	t_stats;
+
+typedef struct s_node
+{
+	int				index;
+	int				value;
+	struct s_node	*prev;
+	struct s_node	*next;
+}	t_node;
+
+typedef struct s_stack
+{
+	t_node	*head;
+	t_node	*tail;
+	int		size;
+	t_stats	*stats;
+}	t_stack;
 
 /* Validation Utils (srcs/ft_validations.c) */
 int		ft_is_number(char *str);
@@ -81,9 +98,10 @@ void	ft_rev_rotate_rra(t_stack *stack_a);
 void	ft_rev_rotate_rrb(t_stack *stack_b);
 void	ft_rev_rotate_rrr(t_stack *stack_a, t_stack *stack_b);
 
-/* Compute Disorder */
+/* Compute Disorder & Benchmark */
 int		ft_compute_disorder(t_stack *stack_a);
 void	ft_print_disorder(int dis, int fd);
+void	ft_print_bench(int dis, t_strategy strat, t_stats *stats, int fd);
 
 /* Index Assignment (srcs/ft_assign_index.c) */
 void	ft_assign_index(t_stack *stack_a);

@@ -41,6 +41,11 @@ void	ft_push_pa(t_stack *stack_a, t_stack *stack_b)
 		return ;
 	ft_push(stack_b, stack_a);
 	write(1, "pa\n", 3);
+	if (stack_a && stack_a->stats)
+	{
+		stack_a->stats->pa++;
+		stack_a->stats->total++;
+	}
 }
 
 void	ft_push_pb(t_stack *stack_a, t_stack *stack_b)
@@ -49,4 +54,9 @@ void	ft_push_pb(t_stack *stack_a, t_stack *stack_b)
 		return ;
 	ft_push(stack_a, stack_b);
 	write(1, "pb\n", 3);
+	if (stack_a && stack_a->stats)
+	{
+		stack_a->stats->pb++;
+		stack_a->stats->total++;
+	}
 }

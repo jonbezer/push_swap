@@ -33,6 +33,11 @@ void	ft_rotate_ra(t_stack *stack_a)
 		return ;
 	ft_rotate(stack_a);
 	write(1, "ra\n", 3);
+	if (stack_a->stats)
+	{
+		stack_a->stats->ra++;
+		stack_a->stats->total++;
+	}
 }
 
 void	ft_rotate_rb(t_stack *stack_b)
@@ -41,6 +46,11 @@ void	ft_rotate_rb(t_stack *stack_b)
 		return ;
 	ft_rotate(stack_b);
 	write(1, "rb\n", 3);
+	if (stack_b->stats)
+	{
+		stack_b->stats->rb++;
+		stack_b->stats->total++;
+	}
 }
 
 void	ft_rotate_rr(t_stack *stack_a, t_stack *stack_b)
@@ -57,4 +67,9 @@ void	ft_rotate_rr(t_stack *stack_a, t_stack *stack_b)
 	if (verify_b)
 		ft_rotate(stack_b);
 	write(1, "rr\n", 3);
+	if (stack_a && stack_a->stats)
+	{
+		stack_a->stats->rr++;
+		stack_a->stats->total++;
+	}
 }

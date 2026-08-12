@@ -29,6 +29,11 @@ void	ft_swap_sa(t_stack *stack_a)
 		return ;
 	ft_swap(stack_a);
 	write(1, "sa\n", 3);
+	if (stack_a->stats)
+	{
+		stack_a->stats->sa++;
+		stack_a->stats->total++;
+	}
 }
 
 void	ft_swap_sb(t_stack *stack_b)
@@ -37,6 +42,11 @@ void	ft_swap_sb(t_stack *stack_b)
 		return ;
 	ft_swap(stack_b);
 	write(1, "sb\n", 3);
+	if (stack_b->stats)
+	{
+		stack_b->stats->sb++;
+		stack_b->stats->total++;
+	}
 }
 
 void	ft_swap_ss(t_stack *stack_a, t_stack *stack_b)
@@ -53,4 +63,9 @@ void	ft_swap_ss(t_stack *stack_a, t_stack *stack_b)
 	if (verify_b)
 		ft_swap(stack_b);
 	write(1, "ss\n", 3);
+	if (stack_a && stack_a->stats)
+	{
+		stack_a->stats->ss++;
+		stack_a->stats->total++;
+	}
 }
