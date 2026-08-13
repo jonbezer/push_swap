@@ -6,7 +6,7 @@
 /*   By: jonbezer <jonbezer@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/08/03 12:37:05 by jonbezer          #+#    #+#             */
-/*   Updated: 2026/08/03 14:40:47 by jonbezer         ###   ########.fr       */
+/*   Updated: 2026/08/13 14:11:33 by jonbezer         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,7 +75,6 @@ void	ft_print_bench(int dis, t_strategy strat, t_stats *stats, int fd)
 	ft_putnbr_fd(stats->total, fd);
 	ft_putchar_fd('\n', fd);
 	
-	// Imprime a contagem detalhada das operações conforme exigido pelo PDF
 	ft_putstr_fd("[bench] sa: ", fd);
 	ft_putnbr_fd(stats->sa, fd);
 	ft_putstr_fd(" sb: ", fd);
