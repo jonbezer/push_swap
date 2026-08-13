@@ -6,7 +6,7 @@
 /*   By: jonbezer <jonbezer@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/08/10 19:02:37 by jonbezer          #+#    #+#             */
-/*   Updated: 2026/08/12 19:59:59 by jonbezer         ###   ########.fr       */
+/*   Updated: 2026/08/13 15:50:44 by jonbezer         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,58 +19,59 @@ int	ft_square(int n)
 	x = 1;
 	while (x * x < n)
 		x++;
-	if (x * x == n)
-		return(x);
-	return(x - 1);
+	return(x);
 }
 
-void	ft_bucket_sort_b(t_stack *stack_a, t_stack *stack_b, int buckets)
+void	ft_from_bottom(t_stack *stack_b, int i)
+{
+	int	j;
+	
+	j = stack_b->size - i;
+	while (j > 0)
+	{
+		ft_rev_rotate_rrb(stack_b);
+		j--;
+	}
+}
+
+void	ft_from_top(t_stack *stack_b, int i)
+{
+	int	j;
+
+	j = i;
+	while( j > 0)
+	{
+		ft_rotate_rb(stack_b);
+		j--;
+	}
+}
+
+void	ft_bucket_sort_to_a(t_stack *stack_a, t_stack *stack_b)
 {
 	int		i;
-	int		j;
-	int		x;
-	int		current_range;
+	int		current_index;
+	t_node	*current_node;
 
-	i = stack_b->size - 1;
-	j = 0;
-	x = 0;
-	current_range = i;
+	current_index = stack_b->size - 1;
 	while (stack_b && stack_b->head)
 	{
-		while (i > current_range - buckets)
+		current_node = stack_b->head;
+		i = 0;
+		while (current_node->index != current_index)
 		{
-			while(j <= buckets)
-			{
-				if (stack_b->head && (stack_b->head->index == i))
-				{
-					ft_push_pa(stack_a, stack_b);
-					i--;
-					j++;
-					x++;
-				}
-				else	
-				{
-					ft_rotate_rb(stack_b);
-					j++;
-				}
-			}
-			while(stack_b->tail && (stack_b->tail->index > current_range - buckets))
-			{
-				ft_rev_rotate_rrb(stack_b);
-				j--;
-			}
-			j = j + x;
-			if (i == current_range - buckets)
-			{
-				current_range = current_range - buckets;
-				j = 0;
-			}
-		}	
+			current_node = current_node->next;
+			i++;
+		}
+		if ((i > (stack_b->size / 2) - 1))
+			ft_from_bottom(stack_b, i);
+		else if (i <= ((stack_b->size / 2) - 1))
+			ft_from_top(stack_b, i);
+		ft_push_pa(stack_a, stack_b);
+		current_index--;
 	}
-	return;
 }
 
-void	ft_bucket_sort(t_stack *stack_a, t_stack *stack_b, int buckets)
+void	ft_bucket_sort_to_b(t_stack *stack_a, t_stack *stack_b, int buckets)
 {
 	int		i;
 	int		current_range;
@@ -91,21 +92,16 @@ void	ft_bucket_sort(t_stack *stack_a, t_stack *stack_b, int buckets)
 		}
 		current_range = current_range + buckets;
 	}
-	return;
 }
 
 void	ft_medium_sort(t_stack *stack_a, t_stack *stack_b)
 {
 	int	buckets;
-	int	rest;
-	int	max_index;
 
 	if (!stack_a || stack_a->size < 2)
 		return;
-	max_index = stack_a->size - 1;
 	buckets = ft_square(stack_a->size);
-	rest	= stack_a->size % buckets;
 	ft_assign_index(stack_a);
-	ft_bucket_sort(stack_a, stack_b, buckets);
-	ft_bucket_sort_b(stack_a, stack_b, buckets);	
+	ft_bucket_sort_to_b(stack_a, stack_b, buckets);
+	ft_bucket_sort_to_a(stack_a, stack_b);	
 }
