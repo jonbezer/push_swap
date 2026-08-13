@@ -6,7 +6,7 @@
 /*   By: jonbezer <jonbezer@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/08/06 13:54:59 by jonbezer          #+#    #+#             */
-/*   Updated: 2026/08/13 14:12:06 by jonbezer         ###   ########.fr       */
+/*   Updated: 2026/08/13 18:09:02 by jonbezer         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,10 +46,7 @@ int	main(int argc, char **argv)
 	stack_b = (t_stack){NULL, NULL, 0, &stats};
 	config = (t_config){0, STRAT_ADAPTIVE};
 	if (!ft_parse_args(argc, argv, &stack_a, &config))
-	{
-		write(2, "Error\n", 6);
-		return (1);
-	}
+		return (write(2, "Error\n", 6), 1);
 	if (stack_a.size > 1)
 	{
 		ft_assign_index(&stack_a);
@@ -59,7 +56,6 @@ int	main(int argc, char **argv)
 			ft_print_bench(disorder, config.strategy, &stats, 2);
 	}
 	ft_clear_stack(&stack_a);
-	ft_clear_stack(&stack_b);	
+	ft_clear_stack(&stack_b);
 	return (0);
 }
-

@@ -6,45 +6,11 @@
 /*   By: jonbezer <jonbezer@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/08/10 19:02:37 by jonbezer          #+#    #+#             */
-/*   Updated: 2026/08/13 15:50:44 by jonbezer         ###   ########.fr       */
+/*   Updated: 2026/08/13 18:04:13 by jonbezer         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
-
-int	ft_square(int n)
-{
-	int	x;
-
-	x = 1;
-	while (x * x < n)
-		x++;
-	return(x);
-}
-
-void	ft_from_bottom(t_stack *stack_b, int i)
-{
-	int	j;
-	
-	j = stack_b->size - i;
-	while (j > 0)
-	{
-		ft_rev_rotate_rrb(stack_b);
-		j--;
-	}
-}
-
-void	ft_from_top(t_stack *stack_b, int i)
-{
-	int	j;
-
-	j = i;
-	while( j > 0)
-	{
-		ft_rotate_rb(stack_b);
-		j--;
-	}
-}
 
 void	ft_bucket_sort_to_a(t_stack *stack_a, t_stack *stack_b)
 {
@@ -75,19 +41,19 @@ void	ft_bucket_sort_to_b(t_stack *stack_a, t_stack *stack_b, int buckets)
 {
 	int		i;
 	int		current_range;
-	
+
 	i = 0;
 	current_range = 0;
-	while(stack_a && stack_a->head)
+	while (stack_a && stack_a->head)
 	{
-		while (i < current_range + buckets)
+		while (stack_a->head && i < current_range + buckets)
 		{
-			if(stack_a->head->index < current_range + buckets)
+			if (stack_a->head->index < current_range + buckets)
 			{
 				ft_push_pb(stack_a, stack_b);
 				i++;
 			}
-			else 
+			else
 				ft_rotate_ra(stack_a);
 		}
 		current_range = current_range + buckets;
@@ -99,9 +65,9 @@ void	ft_medium_sort(t_stack *stack_a, t_stack *stack_b)
 	int	buckets;
 
 	if (!stack_a || stack_a->size < 2)
-		return;
+		return ;
 	buckets = ft_square(stack_a->size);
 	ft_assign_index(stack_a);
 	ft_bucket_sort_to_b(stack_a, stack_b, buckets);
-	ft_bucket_sort_to_a(stack_a, stack_b);	
+	ft_bucket_sort_to_a(stack_a, stack_b);
 }

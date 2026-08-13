@@ -6,7 +6,7 @@
 /*   By: jonbezer <jonbezer@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/08/10 11:28:02 by jonbezer          #+#    #+#             */
-/*   Updated: 2026/08/12 16:49:45 by jonbezer         ###   ########.fr       */
+/*   Updated: 2026/08/13 17:03:14 by jonbezer         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,5 +48,3 @@ void	ft_complex_sort(t_stack *stack_a, t_stack *stack_b)
 			ft_push_pa(stack_a, stack_b);
 	}
 }
-
-

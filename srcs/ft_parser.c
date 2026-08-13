@@ -6,7 +6,7 @@
 /*   By: jonbezer <jonbezer@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/07/24 20:13:26 by jonbezer          #+#    #+#             */
-/*   Updated: 2026/08/03 21:52:54 by jonbezer         ###   ########.fr       */
+/*   Updated: 2026/08/13 17:23:16 by jonbezer         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,18 +24,18 @@ static void	ft_free_split(char **split)
 	free(split);
 }
 
-static int	ft_parse_flag(char *arg, t_config *config)
+static int	ft_parse_flag(char *arg, t_config *conf)
 {
 	if (ft_strncmp(arg, "--simple", 9) == 0)
-		config->strategy = STRAT_SIMPLE;
+		conf->strategy = STRAT_SIMPLE;
 	else if (ft_strncmp(arg, "--medium", 9) == 0)
-		config->strategy = STRAT_MEDIUM;
+		conf->strategy = STRAT_MEDIUM;
 	else if (ft_strncmp(arg, "--complex", 10) == 0)
-		config->strategy = STRAT_COMPLEX;
+		conf->strategy = STRAT_COMPLEX;
 	else if (ft_strncmp(arg, "--adaptive", 11) == 0)
-		config->strategy = STRAT_ADAPTIVE;
+		conf->strategy = STRAT_ADAPTIVE;
 	else if (ft_strncmp(arg, "--bench", 8) == 0)
-		config->bench = 1;
+		conf->bench = 1;
 	else
 		return (0);
 	return (1);
@@ -85,7 +85,7 @@ static int	ft_parse_string(char *arg, t_stack *stack_a)
 	return (1);
 }
 
-int	ft_parse_args(int argc, char **argv, t_stack *stack_a, t_config *config)
+int	ft_parse_args(int argc, char **argv, t_stack *stack_a, t_config *conf)
 {
 	int	i;
 
@@ -94,7 +94,7 @@ int	ft_parse_args(int argc, char **argv, t_stack *stack_a, t_config *config)
 	{
 		if (argv[i][0] == '-' && argv[i][1] == '-')
 		{
-			if (!ft_parse_flag(argv[i], config))
+			if (!ft_parse_flag(argv[i], conf))
 			{
 				ft_clear_stack(stack_a);
 				return (0);

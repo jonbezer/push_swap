@@ -6,7 +6,7 @@
 /*   By: jonbezer <jonbezer@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/07/23 17:36:29 by jonbezer          #+#    #+#             */
-/*   Updated: 2026/08/12 16:17:23 by jonbezer         ###   ########.fr       */
+/*   Updated: 2026/08/13 18:21:04 by jonbezer         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@
 # include <limits.h>
 # include "libft.h"
 
-typedef enum	e_strategy
+typedef enum e_strategy
 {
 	STRAT_ADAPTIVE,
 	STRAT_SIMPLE,
@@ -26,7 +26,7 @@ typedef enum	e_strategy
 	STRAT_COMPLEX
 }	t_strategy;
 
-typedef struct	s_config
+typedef struct s_config
 {
 	int			bench;
 	t_strategy	strategy;
@@ -45,7 +45,7 @@ typedef struct s_stats
 	int	rra;
 	int	rrb;
 	int	rrr;
-	int total;
+	int	total;
 }	t_stats;
 
 typedef struct s_node
@@ -76,8 +76,7 @@ void	ft_add_back(t_stack *stack, t_node *new_node);
 void	ft_clear_stack(t_stack *stack);
 
 /* Parser (srcs/ft_parser.c) */
-int		ft_parse_args(int argc, char **argv, 
-		t_stack *stack_a, t_config *config);
+int		ft_parse_args(int argc, char **argv, t_stack *stack_a, t_config *conf);
 
 /* Operations SWAP (srcs/ft_swap.c) */
 void	ft_swap_sa(t_stack *stack_a);
@@ -98,8 +97,10 @@ void	ft_rev_rotate_rra(t_stack *stack_a);
 void	ft_rev_rotate_rrb(t_stack *stack_b);
 void	ft_rev_rotate_rrr(t_stack *stack_a, t_stack *stack_b);
 
-/* Compute Disorder & Benchmark */
+/* Compute Disorder */
 int		ft_compute_disorder(t_stack *stack_a);
+
+/* Print Benchmark */
 void	ft_print_disorder(int dis, int fd);
 void	ft_print_bench(int dis, t_strategy strat, t_stats *stats, int fd);
 
@@ -107,8 +108,15 @@ void	ft_print_bench(int dis, t_strategy strat, t_stats *stats, int fd);
 void	ft_assign_index(t_stack *stack_a);
 
 /* Sorting Strategies */
+
+/*Simple Sorting*/
 void	ft_simple_sort(t_stack *stack_a, t_stack *stack_b);
+/*Medium Sort*/
+int		ft_square(int n);
+void	ft_from_bottom(t_stack *stack_b, int i);
+void	ft_from_top(t_stack *stack_b, int i);
 void	ft_medium_sort(t_stack *stack_a, t_stack *stack_b);
+/*Complex Sort*/
 void	ft_complex_sort(t_stack *stack_a, t_stack *stack_b);
 
 /* Main (srcs/main.c) */

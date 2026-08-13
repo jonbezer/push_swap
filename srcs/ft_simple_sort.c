@@ -6,7 +6,7 @@
 /*   By: jonbezer <jonbezer@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/08/03 22:40:58 by jonbezer          #+#    #+#             */
-/*   Updated: 2026/08/10 11:30:31 by jonbezer         ###   ########.fr       */
+/*   Updated: 2026/08/13 17:48:33 by jonbezer         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,7 +70,7 @@ static void	ft_sort_three(t_stack *stack_a)
 	else if (first > second && second > third)
 	{
 		ft_swap_sa(stack_a);
-ft_rev_rotate_rra(stack_a);
+		ft_rev_rotate_rra(stack_a);
 	}
 	else if (first > second && second < third && first > third)
 		ft_rotate_ra(stack_a);
