@@ -6,7 +6,7 @@
 /*   By: jonbezer <jonbezer@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/07/23 17:36:29 by jonbezer          #+#    #+#             */
-/*   Updated: 2026/08/13 18:21:04 by jonbezer         ###   ########.fr       */
+/*   Updated: 2026/08/14 17:00:03 by jonbezer         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,6 +61,7 @@ typedef struct s_stack
 	t_node	*head;
 	t_node	*tail;
 	int		size;
+	int		print_ops;
 	t_stats	*stats;
 }	t_stack;
 

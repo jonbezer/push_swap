@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: jonbezer <jonbezer@student.42sp.org.br>    +#+  +:+       +#+         #
+#    By: jonbezer <jonbezer@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2026/07/26 13:41:22 by jonbezer          #+#    #+#              #
-#    Updated: 2026/08/13 18:22:49 by jonbezer         ###   ########.fr        #
+#    Updated: 2026/08/14 18:07:45 by jonbezer         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -47,4 +47,4 @@ fclean: clean
 
 re: fclean all
 
-.PHONY: all clean fclean re $(LIBFT)
+.PHONY: all clean fclean re

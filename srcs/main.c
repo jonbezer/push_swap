@@ -6,7 +6,7 @@
 /*   By: jonbezer <jonbezer@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/08/06 13:54:59 by jonbezer          #+#    #+#             */
-/*   Updated: 2026/08/13 18:09:02 by jonbezer         ###   ########.fr       */
+/*   Updated: 2026/08/14 18:01:12 by jonbezer         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,8 +42,8 @@ int	main(int argc, char **argv)
 	if (argc < 2)
 		return (0);
 	ft_bzero(&stats, sizeof(t_stats));
-	stack_a = (t_stack){NULL, NULL, 0, &stats};
-	stack_b = (t_stack){NULL, NULL, 0, &stats};
+	stack_a = (t_stack){NULL, NULL, 0, 0, &stats};
+	stack_b = (t_stack){NULL, NULL, 0, 0, &stats};
 	config = (t_config){0, STRAT_ADAPTIVE};
 	if (!ft_parse_args(argc, argv, &stack_a, &config))
 		return (write(2, "Error\n", 6), 1);

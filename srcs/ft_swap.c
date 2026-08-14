@@ -6,7 +6,7 @@
 /*   By: jonbezer <jonbezer@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/07/26 15:06:58 by jonbezer          #+#    #+#             */
-/*   Updated: 2026/08/06 11:03:31 by jonbezer         ###   ########.fr       */
+/*   Updated: 2026/08/14 17:06:49 by jonbezer         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,8 @@ void	ft_swap_sa(t_stack *stack_a)
 	if (!stack_a || !stack_a->head || !stack_a->head->next)
 		return ;
 	ft_swap(stack_a);
-	write(1, "sa\n", 3);
+	if (stack_a->print_ops)
+		write(1, "sa\n", 3);
 	if (stack_a->stats)
 	{
 		stack_a->stats->sa++;
@@ -41,7 +42,8 @@ void	ft_swap_sb(t_stack *stack_b)
 	if (!stack_b || !stack_b->head || !stack_b->head->next)
 		return ;
 	ft_swap(stack_b);
-	write(1, "sb\n", 3);
+	if (stack_b->print_ops)
+		write(1, "sb\n", 3);
 	if (stack_b->stats)
 	{
 		stack_b->stats->sb++;
@@ -62,7 +64,8 @@ void	ft_swap_ss(t_stack *stack_a, t_stack *stack_b)
 		ft_swap(stack_a);
 	if (verify_b)
 		ft_swap(stack_b);
-	write(1, "ss\n", 3);
+	if (stack_a->print_ops)
+		write(1, "ss\n", 3);
 	if (stack_a && stack_a->stats)
 	{
 		stack_a->stats->ss++;
