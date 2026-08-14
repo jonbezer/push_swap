@@ -6,7 +6,7 @@
 /*   By: jonbezer <jonbezer@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/07/23 17:36:29 by jonbezer          #+#    #+#             */
-/*   Updated: 2026/08/14 17:00:03 by jonbezer         ###   ########.fr       */
+/*   Updated: 2026/08/14 18:46:17 by jonbezer         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,7 @@ typedef enum e_strategy
 typedef struct s_config
 {
 	int			bench;
+	int			is_adaptive;
 	t_strategy	strategy;
 }	t_config;
 
