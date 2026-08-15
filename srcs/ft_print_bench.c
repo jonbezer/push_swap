@@ -6,7 +6,7 @@
 /*   By: jonbezer <jonbezer@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/08/13 18:19:19 by jonbezer          #+#    #+#             */
-/*   Updated: 2026/08/14 19:05:43 by jonbezer         ###   ########.fr       */
+/*   Updated: 2026/08/15 10:46:44 by jonbezer         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,45 +24,23 @@ void	ft_print_disorder(int dis, int fd)
 	ft_putchar_fd('\n', fd);
 }
 
-// static void	ft_print_strategy_name(t_strategy strat, int fd)
-// {
-// 	if (strat == STRAT_SIMPLE)
-// 		ft_putstr_fd("Simple / O(n²)", fd);
-// 	else if (strat == STRAT_MEDIUM)
-// 		ft_putstr_fd("Medium / O(n√n)", fd);
-// 	else if (strat == STRAT_COMPLEX)
-// 		ft_putstr_fd("Complex / O(n log n)", fd);
-// 	else
-// 		ft_putstr_fd("Adaptive / O(n√n)", fd);
-// }
-
-static void	ft_print_strategy_name(t_config *conf, int fd)
+static void	ft_print_strategy(t_config *conf, int fd)
 {
-	if (!conf->is_adaptive)
-	{
-		if (conf->strategy == STRAT_SIMPLE)
-			ft_putstr_fd("Simple", fd);
-		else if (conf->strategy == STRAT_MEDIUM)
-			ft_putstr_fd("Medium", fd);
-		else if (conf->strategy == STRAT_COMPLEX)
-			ft_putstr_fd("Complex)", fd);
-	}
+	ft_putstr_fd("[bench] strategy: ", fd);
+	if (conf->is_adaptive)
+		ft_putstr_fd("Adaptive / ", fd);
+	else if (conf->strategy == STRAT_SIMPLE)
+		ft_putstr_fd("Simple / ", fd);
+	else if (conf->strategy == STRAT_MEDIUM)
+		ft_putstr_fd("Medium / ", fd);
 	else
-		ft_putstr_fd("Adaptive", fd);
-	ft_print_strategy_used(&conf, fd);	
-}
-
-static void	ft_print_strategy_used(t_config *conf, int fd)
-{
-	if (!conf->is_adaptive)
-	{
-		if (conf->strategy == STRAT_SIMPLE)
-			ft_putstr_fd(" / O(n²)", fd);
-		else if (conf->strategy == STRAT_MEDIUM)
-			ft_putstr_fd(" / O(n√n)", fd);
-		else if (conf->strategy == STRAT_COMPLEX)
-			ft_putstr_fd(" / O(n log n)", fd);
-	}
+		ft_putstr_fd("Complex / ", fd);
+	if (conf->strategy == STRAT_SIMPLE)
+		ft_putstr_fd("O(n²)\n", fd);
+	else if (conf->strategy == STRAT_MEDIUM)
+		ft_putstr_fd("O(n√n)\n", fd);
+	else
+		ft_putstr_fd("O(n log n)\n", fd);
 }
 
 static void	ft_print_stats_1(t_stats *stats, int fd)
@@ -97,12 +75,10 @@ static void	ft_print_stats_2(t_stats *stats, int fd)
 	ft_putchar_fd('\n', fd);
 }
 
-void	ft_print_bench(int dis, t_strategy strat, t_stats *stats, int fd)
+void	ft_print_bench(int dis, t_config *conf, t_stats *stats, int fd)
 {
 	ft_print_disorder(dis, fd);
-	ft_putstr_fd("[bench] strategy: ", fd);
-	ft_print_strategy_name(strat, fd);
-	ft_putchar_fd('\n', fd);
+	ft_print_strategy(conf, fd);
 	ft_putstr_fd("[bench] total_ops: ", fd);
 	ft_putnbr_fd(stats->total, fd);
 	ft_putchar_fd('\n', fd);

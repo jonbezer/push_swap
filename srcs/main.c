@@ -6,30 +6,11 @@
 /*   By: jonbezer <jonbezer@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/08/06 13:54:59 by jonbezer          #+#    #+#             */
-/*   Updated: 2026/08/14 18:47:17 by jonbezer         ###   ########.fr       */
+/*   Updated: 2026/08/15 10:49:20 by jonbezer         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
-
-static void	ft_execute_strategy(t_stack *a, t_stack *b, t_config *conf, int dis)
-{
-	if (conf->strategy == STRAT_ADAPTIVE)
-	{
-		if (dis < 2000)
-			conf->strategy = STRAT_SIMPLE;
-		else if (dis < 5000)
-			conf->strategy = STRAT_MEDIUM;
-		else
-			conf->strategy = STRAT_COMPLEX;
-	}
-	if (conf->strategy == STRAT_SIMPLE)
-		ft_simple_sort(a, b);
-	else if (conf->strategy == STRAT_MEDIUM)
-		ft_medium_sort(a, b);
-	else if (conf->strategy == STRAT_COMPLEX)
-		ft_complex_sort(a, b);
-}
 
 int	main(int argc, char **argv)
 {
@@ -53,7 +34,7 @@ int	main(int argc, char **argv)
 		disorder = ft_compute_disorder(&stack_a);
 		ft_execute_strategy(&stack_a, &stack_b, &config, disorder);
 		if (config.bench)
-			ft_print_bench(disorder, config.strategy, &stats, 2);
+			ft_print_bench(disorder, &config, &stats, 2);
 	}
 	ft_clear_stack(&stack_a);
 	ft_clear_stack(&stack_b);

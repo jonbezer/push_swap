@@ -6,7 +6,7 @@
 /*   By: jonbezer <jonbezer@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/07/23 17:36:29 by jonbezer          #+#    #+#             */
-/*   Updated: 2026/08/14 18:46:17 by jonbezer         ###   ########.fr       */
+/*   Updated: 2026/08/15 10:46:03 by jonbezer         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -104,13 +104,14 @@ int		ft_compute_disorder(t_stack *stack_a);
 
 /* Print Benchmark */
 void	ft_print_disorder(int dis, int fd);
-void	ft_print_bench(int dis, t_strategy strat, t_stats *stats, int fd);
+void	ft_print_bench(int dis, t_config *conf, t_stats *stats, int fd);
 
 /* Index Assignment (srcs/ft_assign_index.c) */
 void	ft_assign_index(t_stack *stack_a);
 
 /* Sorting Strategies */
-
+/* Execution */
+void	ft_execute_strategy(t_stack *a, t_stack *b, t_config *conf, int dis);
 /*Simple Sorting*/
 void	ft_simple_sort(t_stack *stack_a, t_stack *stack_b);
 /*Medium Sort*/
