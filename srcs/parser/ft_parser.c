@@ -6,7 +6,7 @@
 /*   By: jonbezer <jonbezer@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/07/24 20:13:26 by jonbezer          #+#    #+#             */
-/*   Updated: 2026/08/14 19:09:19 by jonbezer         ###   ########.fr       */
+/*   Updated: 2026/08/16 17:08:36 by jonbezer         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,18 +24,30 @@ static void	ft_free_split(char **split)
 	free(split);
 }
 
-static int	ft_parse_flag(char *arg, t_config *conf)
+static int	ft_parse_flag(char *arg, t_config *config)
 {
 	if (ft_strncmp(arg, "--simple", 9) == 0)
-		conf->strategy = STRAT_SIMPLE;
+	{
+		config->strategy = STRAT_SIMPLE;
+		config->is_adaptive = 0;
+	}
 	else if (ft_strncmp(arg, "--medium", 9) == 0)
-		conf->strategy = STRAT_MEDIUM;
+	{
+		config->strategy = STRAT_MEDIUM;
+		config->is_adaptive = 0;
+	}
 	else if (ft_strncmp(arg, "--complex", 10) == 0)
-		conf->strategy = STRAT_COMPLEX;
+	{
+		config->strategy = STRAT_COMPLEX;
+		config->is_adaptive = 0;
+	}
 	else if (ft_strncmp(arg, "--adaptive", 11) == 0)
-		conf->strategy = STRAT_ADAPTIVE;
+	{
+		config->strategy = STRAT_ADAPTIVE;
+		config->is_adaptive = 1;
+	}
 	else if (ft_strncmp(arg, "--bench", 8) == 0)
-		conf->bench = 1;
+		config->bench = 1;
 	else
 		return (0);
 	return (1);
@@ -85,7 +97,7 @@ static int	ft_parse_string(char *arg, t_stack *stack_a)
 	return (1);
 }
 
-int	ft_parse_args(int argc, char **argv, t_stack *stack_a, t_config *conf)
+int	ft_parse_args(int argc, char **argv, t_stack *stack_a, t_config *config)
 {
 	int	i;
 
@@ -94,7 +106,7 @@ int	ft_parse_args(int argc, char **argv, t_stack *stack_a, t_config *conf)
 	{
 		if (argv[i][0] == '-' && argv[i][1] == '-')
 		{
-			if (!ft_parse_flag(argv[i], conf))
+			if (!ft_parse_flag(argv[i], config))
 			{
 				ft_clear_stack(stack_a);
 				return (0);

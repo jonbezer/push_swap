@@ -6,7 +6,7 @@
 /*   By: jonbezer <jonbezer@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/08/13 18:19:19 by jonbezer          #+#    #+#             */
-/*   Updated: 2026/08/15 10:46:44 by jonbezer         ###   ########.fr       */
+/*   Updated: 2026/08/16 17:09:47 by jonbezer         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,20 +24,20 @@ void	ft_print_disorder(int dis, int fd)
 	ft_putchar_fd('\n', fd);
 }
 
-static void	ft_print_strategy(t_config *conf, int fd)
+static void	ft_print_strategy(t_config *config, int fd)
 {
 	ft_putstr_fd("[bench] strategy: ", fd);
-	if (conf->is_adaptive)
+	if (config->is_adaptive)
 		ft_putstr_fd("Adaptive / ", fd);
-	else if (conf->strategy == STRAT_SIMPLE)
+	else if (config->strategy == STRAT_SIMPLE)
 		ft_putstr_fd("Simple / ", fd);
-	else if (conf->strategy == STRAT_MEDIUM)
+	else if (config->strategy == STRAT_MEDIUM)
 		ft_putstr_fd("Medium / ", fd);
 	else
 		ft_putstr_fd("Complex / ", fd);
-	if (conf->strategy == STRAT_SIMPLE)
+	if (config->strategy == STRAT_SIMPLE)
 		ft_putstr_fd("O(n²)\n", fd);
-	else if (conf->strategy == STRAT_MEDIUM)
+	else if (config->strategy == STRAT_MEDIUM)
 		ft_putstr_fd("O(n√n)\n", fd);
 	else
 		ft_putstr_fd("O(n log n)\n", fd);
@@ -75,10 +75,10 @@ static void	ft_print_stats_2(t_stats *stats, int fd)
 	ft_putchar_fd('\n', fd);
 }
 
-void	ft_print_bench(int dis, t_config *conf, t_stats *stats, int fd)
+void	ft_print_bench(int dis, t_config *config, t_stats *stats, int fd)
 {
 	ft_print_disorder(dis, fd);
-	ft_print_strategy(conf, fd);
+	ft_print_strategy(config, fd);
 	ft_putstr_fd("[bench] total_ops: ", fd);
 	ft_putnbr_fd(stats->total, fd);
 	ft_putchar_fd('\n', fd);

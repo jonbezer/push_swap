@@ -6,27 +6,11 @@
 /*   By: jonbezer <jonbezer@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/08/03 22:40:58 by jonbezer          #+#    #+#             */
-/*   Updated: 2026/08/13 17:48:33 by jonbezer         ###   ########.fr       */
+/*   Updated: 2026/08/16 18:35:11 by jonbezer         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
-
-int	ft_is_sorted(t_stack *stack_a)
-{
-	t_node	*current_node;
-
-	if (!stack_a || !stack_a->head)
-		return (1);
-	current_node = stack_a->head;
-	while (current_node->next)
-	{
-		if (current_node->value > current_node->next->value)
-			return (0);
-		current_node = current_node->next;
-	}
-	return (1);
-}
 
 static int	ft_idx_min_stack(t_stack *stack_a)
 {

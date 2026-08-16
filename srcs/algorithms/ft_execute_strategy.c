@@ -6,27 +6,33 @@
 /*   By: jonbezer <jonbezer@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/08/15 10:40:45 by jonbezer          #+#    #+#             */
-/*   Updated: 2026/08/15 10:41:00 by jonbezer         ###   ########.fr       */
+/*   Updated: 2026/08/16 18:56:13 by jonbezer         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void	ft_execute_strategy(t_stack *a, t_stack *b, t_config *conf, int dis)
+void	ft_execute_strategy(t_stack *a, t_stack *b, t_config *config, int dis)
 {
-	if (conf->strategy == STRAT_ADAPTIVE)
+	//a->print_ops = !config->bench;
+	//b->print_ops = !config->bench;
+	if (ft_is_sorted(a))
+		return ;
+	if (config->strategy == STRAT_ADAPTIVE)
 	{
-		if (dis < 2000)
-			conf->strategy = STRAT_SIMPLE;
+		if (a->size <= 5)
+			config->strategy = STRAT_SIMPLE;
+		else if (dis < 2000)
+			config->strategy = STRAT_SIMPLE;
 		else if (dis < 5000)
-			conf->strategy = STRAT_MEDIUM;
+			config->strategy = STRAT_MEDIUM;
 		else
-			conf->strategy = STRAT_COMPLEX;
+			config->strategy = STRAT_COMPLEX;
 	}
-	if (conf->strategy == STRAT_SIMPLE)
+	if (config->strategy == STRAT_SIMPLE)
 		ft_simple_sort(a, b);
-	else if (conf->strategy == STRAT_MEDIUM)
+	else if (config->strategy == STRAT_MEDIUM)
 		ft_medium_sort(a, b);
-	else if (conf->strategy == STRAT_COMPLEX)
+	else if (config->strategy == STRAT_COMPLEX)
 		ft_complex_sort(a, b);
 }

@@ -6,7 +6,7 @@
 /*   By: jonbezer <jonbezer@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/07/23 17:36:29 by jonbezer          #+#    #+#             */
-/*   Updated: 2026/08/15 10:46:03 by jonbezer         ###   ########.fr       */
+/*   Updated: 2026/08/16 18:36:35 by jonbezer         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,6 +71,7 @@ int		ft_is_number(char *str);
 long	ft_atol(char *str);
 int		ft_is_in_range(long num);
 int		ft_has_duplicate(t_node *stack, int num);
+int		ft_is_sorted(t_stack *stack_a);
 
 /* Stack Management (srcs/ft_stack_utils.c) */
 t_node	*ft_create_node(int value);
