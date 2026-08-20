@@ -6,7 +6,7 @@
 /*   By: jonbezer <jonbezer@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/08/10 19:02:37 by jonbezer          #+#    #+#             */
-/*   Updated: 2026/08/13 18:04:13 by jonbezer         ###   ########.fr       */
+/*   Updated: 2026/08/19 20:54:46 by jonbezer         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,9 +28,9 @@ void	ft_bucket_sort_to_a(t_stack *stack_a, t_stack *stack_b)
 			current_node = current_node->next;
 			i++;
 		}
-		if ((i > (stack_b->size / 2) - 1))
+		if (i > (stack_b->size / 2))
 			ft_from_bottom(stack_b, i);
-		else if (i <= ((stack_b->size / 2) - 1))
+		else
 			ft_from_top(stack_b, i);
 		ft_push_pa(stack_a, stack_b);
 		current_index--;

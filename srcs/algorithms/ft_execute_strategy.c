@@ -6,7 +6,7 @@
 /*   By: jonbezer <jonbezer@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/08/15 10:40:45 by jonbezer          #+#    #+#             */
-/*   Updated: 2026/08/16 18:56:13 by jonbezer         ###   ########.fr       */
+/*   Updated: 2026/08/19 20:38:58 by jonbezer         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,8 @@
 
 void	ft_execute_strategy(t_stack *a, t_stack *b, t_config *config, int dis)
 {
-	//a->print_ops = !config->bench;
-	//b->print_ops = !config->bench;
+	/* a->print_ops = !config->bench; */
+	/* b->print_ops = !config->bench; */
 	if (ft_is_sorted(a))
 		return ;
 	if (config->strategy == STRAT_ADAPTIVE)
